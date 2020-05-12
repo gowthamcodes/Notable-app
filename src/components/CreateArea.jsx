@@ -9,6 +9,8 @@ function CreateArea(props) {
     content: "",
   });
 
+  const [isClicked, setClicked] = useState(false);
+
   function handleChange(event) {
     const { name, value } = event.target;
     setNote((prev) => {
@@ -17,6 +19,10 @@ function CreateArea(props) {
         [name]: value,
       };
     });
+  }
+
+  function handleClick() {
+    setClicked(true);
   }
 
   const { title, content } = note;
@@ -30,20 +36,26 @@ function CreateArea(props) {
           event.preventDefault();
         }}
       >
-        <input
-          onChange={handleChange}
-          name="title"
-          placeholder="Title"
-          value={title}
-        />
+        {isClicked && (
+          <input
+            onChange={handleChange}
+            autoComplete="off"
+            name="title"
+            placeholder="Title"
+            value={title}
+          />
+        )}
+
         <textarea
+          onClick={handleClick}
           onChange={handleChange}
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={isClicked ? "3" : "1"}
           value={content}
         />
-        <Zoom in={true}>
+
+        <Zoom in={isClicked}>
           <Fab>
             <AddIcon />
           </Fab>
