@@ -28,14 +28,7 @@ function CreateArea(props) {
   const { title, content } = note;
   return (
     <Fragment>
-      <form
-        className="create-note"
-        onSubmit={(event) => {
-          props.onAdd(note);
-          setNote({ title: "", content: "" });
-          event.preventDefault();
-        }}
-      >
+      <form className="create-note">
         {isClicked && (
           <input
             onChange={handleChange}
@@ -56,7 +49,13 @@ function CreateArea(props) {
         />
 
         <Zoom in={isClicked}>
-          <Fab>
+          <Fab
+            onClick={(event) => {
+              props.onAdd(note);
+              setNote({ title: "", content: "" });
+              event.preventDefault();
+            }}
+          >
             <AddIcon />
           </Fab>
         </Zoom>
