@@ -1,9 +1,13 @@
 import React from "react";
+import NotesIcon from "@material-ui/icons/Notes";
 
 function Header() {
   return (
     <header>
-      <h1>Notable</h1>
+      <h1>
+        <NotesIcon />
+        Notable
+      </h1>
     </header>
   );
 }

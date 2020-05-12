@@ -51,7 +51,7 @@ function CreateArea(props) {
           onChange={handleChange}
           name="content"
           placeholder="Take a note..."
-          rows={isClicked ? "3" : "1"}
+          rows={isClicked ? 3 : 1}
           value={content}
         />
 
